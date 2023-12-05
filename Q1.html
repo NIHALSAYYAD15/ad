@@ -1,0 +1,69 @@
+<!-- Implement a program for accepting and validating user-entered data on web pages -->
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Data Validation</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+        }
+        .error {
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <h2>User Data Form</h2>
+    <form id="userDataForm">
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <span id="nameError" class="error"></span>
+
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <span id="emailError" class="error"></span>
+
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <script>
+        document.getElementById("userDataForm").addEventListener("submit", function(event) {
+            var isValid = true;
+
+            // Validate Name
+            var name = document.getElementById("name").value;
+            var nameError = document.getElementById("nameError");
+            if (name.trim() === "") {
+                nameError.textContent = "Name is required";
+                isValid = false;
+            } else {
+                nameError.textContent = "";
+            }
+
+            // Validate Email
+            var email = document.getElementById("email").value;
+            var emailError = document.getElementById("emailError");
+            var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                emailError.textContent = "Invalid email address";
+                isValid = false;
+            } else {
+                emailError.textContent = "";
+            }
+
+            // Prevent form submission if validation fails
+            if (!isValid) {
+                event.preventDefault();
+            }
+        });
+    </script>
+</body>
+</html>

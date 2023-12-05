@@ -1,0 +1,112 @@
+<!--Add client-side form validation to the registration web form. Validate fields such as email,
+     password strength, and phone number.-->
+
+     <!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Registration Form</title>
+  <style>
+    body {
+      font-family: Calibri, Helvetica, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      /*display: flex;
+      align-items: center;
+      /*justify-content: center;
+      height: 100vh; /* Full viewport height */
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Registration Form</h2>
+    <form onsubmit="return validateForm()">
+      <label for="firstname">First Name:</label>
+      <input type="text" id="firstname" name="firstname" placeholder="Enter your first name" required>
+
+      <label for="lastname">Last Name:</label>
+      <input type="text" id="lastname" name="lastname" placeholder="Enter your last name" required>
+
+      <label for="email">Email:</label>
+      <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+      <label for="password">Password:</label>
+      <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+      <label for="phone">Phone:</label>
+      <input type="tel" id="phone" name="phone" placeholder="Enter your phone number">
+
+      <button type="submit">Register</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var firstname = document.getElementById('firstname').value;
+      var lastname = document.getElementById('lastname').value;
+      var email = document.getElementById('email').value;
+      var password = document.getElementById('password').value;
+      var phone = document.getElementById('phone').value;
+
+      // Basic checks for required fields
+      if (!firstname || !lastname || !email || !password) {
+        alert("Please fill out all required fields.");
+        return false;
+      }
+
+      // Email validation
+      var emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        alert("Invalid email address");
+        return false;
+      }
+
+      // Password strength validation (at least 8 characters)
+      if (password.length < 8) {
+        alert("Password must be at least 8 characters long");
+        return false;
+      }
+
+      // Phone number validation (optional, allowing empty input)
+      var phoneRegex = /^[0-9]*$/;
+      if (phone && !phoneRegex.test(phone)) {
+        alert("Invalid phone number");
+        return false;
+      }
+
+      // If all validations pass, the form will be submitted
+      return true;
+    }
+  </script>
+</body>
+</html>

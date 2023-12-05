@@ -1,0 +1,101 @@
+<!-- Implement a program for accepting and validating book catalog information.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Book Catalog Form</title>
+  <style>
+    body {
+      font-family: Calibri, Helvetica, sans-serif;
+      background-color: #f2f2f2;
+      margin: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .container {
+      background-color: #ffffff;
+      padding: 20px;
+      border-radius: 5px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 100%;
+      box-sizing: border-box;
+    }
+    input {
+      width: 100%;
+      padding: 10px;
+      margin: 8px 0;
+      display: inline-block;
+      border: 1px solid #ccc;
+      box-sizing: border-box;
+    }
+    button {
+      background-color: #4CAF50;
+      color: white;
+      padding: 14px 20px;
+      margin: 8px 0;
+      border: none;
+      cursor: pointer;
+      width: 100%;
+    }
+    button:hover {
+      opacity: 0.8;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h2>Book Catalog Form</h2>
+    <form onsubmit="return validateForm()">
+      <label for="title">Title:</label>
+      <input type="text" id="title" name="title" placeholder="Enter the book title" required>
+
+      <label for="author">Author:</label>
+      <input type="text" id="author" name="author" placeholder="Enter the author" required>
+
+      <label for="year">Publication Year:</label>
+      <input type="number" id="year" name="year" placeholder="Enter the publication year" required>
+
+      <label for="isbn">ISBN:</label>
+      <input type="text" id="isbn" name="isbn" placeholder="Enter the ISBN" required>
+
+      <button type="submit">Submit</button>
+    </form>
+  </div>
+
+  <script>
+    function validateForm() {
+      var title = document.getElementById('title').value;
+      var author = document.getElementById('author').value;
+      var year = document.getElementById('year').value;
+      var isbn = document.getElementById('isbn').value;
+
+      // Basic checks for required fields
+      if (!title || !author || !year || !isbn) {
+        alert("Please fill out all required fields.");
+        return false;
+      }
+
+      // Year validation (numeric and positive)
+      if (isNaN(year) || year <= 0) {
+        alert("Invalid publication year");
+        return false;
+      }
+
+      // ISBN validation (numeric and 10 or 13 characters)
+      if (isNaN(isbn) || (isbn.length !== 10 && isbn.length !== 13)) {
+        alert("Invalid ISBN");
+        return false;
+      }
+
+      // If all validations pass, the form will be submitted
+      alert("Form submitted successfully!");
+      return true;
+    }
+  </script>
+</body>
+</html>
+
+

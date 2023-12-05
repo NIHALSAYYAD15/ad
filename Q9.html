@@ -1,0 +1,82 @@
+<!-- Use JavaScript to dynamically update content on a webpage. Create a simple image slider using jQuery.-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Image Slider</title>
+  <style>
+    .slider-container {
+      max-width: 800px;
+      margin: 20px auto;
+      overflow: hidden;
+      position: relative;
+    }
+    .slider {
+      display: flex;
+      transition: transform 0.5s ease-in-out;
+    }
+    .slider img {
+      width: 100%;
+      height: auto;
+    }
+    .prev, .next {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: 20px;
+      cursor: pointer;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      padding: 10px;
+      margin: 0 10px;
+      outline: none;
+    }
+    .next {
+      right: 0;
+    }
+  </style>
+</head>
+<body>
+
+<div class="slider-container">
+  <div class="slider">
+    <img src="car1.jpg" alt="Image 1">
+    <img src="car2.jpg" alt="Image 2">
+    <img src="car3.jpg" alt="Image 3">
+    <img src="car4.jpg" alt="Image 4">
+    <img src="car5.jpg" alt="Image 5">
+    <img src="car6.jpg" alt="Image 6">
+  </div>
+  <button class="prev" onclick="prevSlide()">❮</button>
+  <button class="next" onclick="nextSlide()">❯</button>
+</div>
+
+<script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+<script>
+  let currentSlide = 0;
+
+  function showSlide(index) {
+    $('.slider').css('transform', 'translateX(' + (-index * 100) + '%)');
+    currentSlide = index;
+  }
+
+  function nextSlide() {
+    currentSlide = (currentSlide + 1) % $('.slider img').length;
+    showSlide(currentSlide);
+  }
+
+  function prevSlide() {
+    currentSlide = (currentSlide - 1 + $('.slider img').length) % $('.slider img').length;
+    showSlide(currentSlide);
+  }
+
+  // Automatic slideshow (comment out if not needed)
+  setInterval(nextSlide, 3000);
+</script>
+
+</body>
+</html>
+

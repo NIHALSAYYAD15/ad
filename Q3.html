@@ -1,0 +1,36 @@
+<!--Read and write HTML content with jQuery-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>jQuery HTML Manipulation</title>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+</head>
+<body>
+
+<div id="content">
+  <h2>Original HTML Content</h2>
+  <p>This is the initial content.</p>
+</div>
+
+<button onclick="readHTML()">Read HTML</button>
+<button onclick="writeHTML()">Write HTML</button>
+
+<script>
+  function readHTML() {
+    // Read HTML content
+    var currentHTML = $('#content').html();
+    alert('Current HTML Content:\n\n' + currentHTML);
+  }
+
+  function writeHTML() {
+    // Write new HTML content
+    var newHTML = '<h2>New HTML Content</h2><p>This is the updated content.</p>';
+    $('#content').html(newHTML);
+  }
+</script>
+
+</body>
+</html>

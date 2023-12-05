@@ -1,0 +1,13 @@
+First, you'll need to install Node.js and npm if you haven't already. Then, create a new project 
+  folder and navigate to it in the terminal. Run the following commands to initialize a new Node.
+  js project and install Express:
+
+npm init -y
+npm install express
+
+create as
+app.js
+
+make folder here 
+public
+
